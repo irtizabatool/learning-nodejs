@@ -8,11 +8,14 @@
 </head>
 <body>
     <div style="display: block; align-items: center;">
-        <h1>You searched for: stuff</h1>
+        <h1>You searched for: <%= data.userQuery %> </h1>
+        <% if(data.loggedIn) { %>
+            <h2>You are loggedIn as : <%= data.username %></h2>
+        <% } %>
         <ul>
-            <li>Lorem ipsum</li>
-            <li>Lorem ipsum</li>
-            <li>Lorem ipsum</li>
+           <% data.searchResults.forEach(result => { %>
+               <li><%= result %> </li> 
+          <% }); %>
         </ul>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
