@@ -3,16 +3,13 @@ const path =  require('path');
 const bodyParser = require('body-parser');
 const app = express();
 
+const people = require('./routes/people')
 app.use('/public', express.static(path.join(__dirname, 'static')));
 app.set('view engine', 'ejs');
-
-app.get('/:userQuery', (req,res) => {
-    res.render('index', {data: {
-        userQuery: req.params.userQuery,
-        searchResults: ['book1','book2', 'book3'],
-        loggedIn: false,
-        username: 'irtiza'
-    }});
+app.use('/people', people);
+app.get('/', (req,res) => {
+    console.log(req.banana);
+    res.send('hello from express');
 });
 
 // app.post('/', (req, res) => {
